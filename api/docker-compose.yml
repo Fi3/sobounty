@@ -1,0 +1,19 @@
+version: '3'
+services:
+  web:
+    build: .
+    working_dir: /usr/src/app
+    command: yarn start
+    volumes:
+      - ./package.json:/usr/src/app/package.json
+      - ./api.js:/usr/src/app/api.js
+    ports:
+      - "8000:8000"
+    links:
+      - redis
+  redis:
+    image: "redis:alpine"
+    volumes:
+      - ./redis_vol:/data
+    expose:
+      - 6379
