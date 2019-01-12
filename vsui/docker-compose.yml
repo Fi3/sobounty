@@ -1,0 +1,15 @@
+version: '3'
+services:
+  web:
+    build: .
+    working_dir: /usr/src/app
+    command: yarn start
+    volumes:
+      - ./package.json:/usr/src/app/package.json
+      - ./src:/usr/src/app/src
+      - ./libs:/usr/src/app/libs
+      - ./dist:/usr/src/app/dist
+      - ./webpack.config.js:/usr/src/app/webpack.config.js
+      - ./.babelrc:/usr/src/app/.babelrc
+    ports:
+      - "8080:8080"
