@@ -7,7 +7,7 @@ export const Rows = ({questions}: {questions: Array<Question>}): ComponentType =
   QuestionTable(Body(questions), Head(['TITLE','STATE','BOUNTY']));
 
 const QuestionTable = (body, head) => 
-  <table class="table is-responsive">
+  <table class="table is-responsive" style={TableStyle}>
     <thead>
       <tr>
         {head}
@@ -37,3 +37,8 @@ const Body = (questions: Array<Question>) =>
   );
 
 const Head = (fields) => map(field => <th>{field}</th>, fields);
+
+const TableStyle =
+  { maxWidth: '75%'
+  , margin: 'auto'
+  };
